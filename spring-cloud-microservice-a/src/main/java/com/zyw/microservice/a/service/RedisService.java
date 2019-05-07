@@ -8,6 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+/**
+ * @description Redis的Service
+ * @author ZhangYuWei
+ * @create 2019-05-07
+ */
 @Service
 public class RedisService {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
