@@ -1,4 +1,4 @@
-package com.zyw.microservice.a;
+package com.zyw.microservice.b;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * @description Swagger2配置类
  * @author ZhangYuWei
- * @create 2019-05-07
+ * @create 2019-05-08
  */
 @Configuration
 @EnableSwagger2
@@ -25,16 +25,16 @@ public class Swagger2 {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(apiInfo())
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.zyw.microservice.a.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.zyw.microservice.b.controller"))
 				.paths(PathSelectors.any())
 				.build();
 	}
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("微服务A")
-				.description("微服务A")
-				.termsOfServiceUrl("http://localhost:8001")
+				.title("微服务B")
+				.description("--------------------------------")
+				.termsOfServiceUrl("http://localhost:8002")
 				.contact("ZhangYuWei")
 				.version("1.0")
 				.build();
