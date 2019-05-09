@@ -33,7 +33,7 @@ public class Swagger2 {
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
 				.title("微服务B")
-				.description("--------------------------------")
+				.description("微服务B")
 				.termsOfServiceUrl("http://localhost:8002")
 				.contact("ZhangYuWei")
 				.version("1.0")
