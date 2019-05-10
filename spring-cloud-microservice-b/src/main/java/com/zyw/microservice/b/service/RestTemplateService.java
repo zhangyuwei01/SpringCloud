@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.zyw.microservice.b.common.RestResponse;
@@ -41,7 +41,13 @@ public class RestTemplateService {
 		headers.add("token", "abcdef"); //将token放到请求头中
 		HttpEntity<String> requestEntity = new HttpEntity<>(body, headers);
 		
-		ResponseEntity<RestResponse> response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, RestResponse.class);
+		ResponseEntity<RestResponse> response = null;
+		try {
+			response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, RestResponse.class);
+		} catch (RestClientException e) {
+			logger.error("调用微服务A失败！异常信息：{}",e.getMessage(),e);
+			return RestUtils.returnFailure("调用微服务A失败！");
+		}
 		if(response.getStatusCodeValue() != 200) {
 			return RestUtils.returnFailure("调用微服务A失败！");
 		}
@@ -66,7 +72,13 @@ public class RestTemplateService {
 		headers.add("token", "abcdef");
     	HttpEntity<Map<String,Object>> requestEntity = new HttpEntity<>(body, headers);
     	
-    	ResponseEntity<RestResponse> response = this.restTemplate.postForEntity(url, requestEntity, RestResponse.class);
+    	ResponseEntity<RestResponse> response = null;
+		try {
+			response = this.restTemplate.postForEntity(url, requestEntity, RestResponse.class);
+		} catch (RestClientException e) {
+			logger.error("调用微服务A失败！异常信息：{}",e.getMessage(),e);
+			return RestUtils.returnFailure("调用微服务A失败！");
+		}
 		if(response.getStatusCodeValue() != 200) {
 			return RestUtils.returnFailure("调用微服务A失败！");
 		}
