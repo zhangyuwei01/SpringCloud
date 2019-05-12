@@ -13,7 +13,7 @@ import com.zyw.microservice.a.util.RestUtils;
 import com.zyw.microservice.a.vo.RedisVo;
 
 /**
- * @description Redis的Service
+ * @description Redis操作的Service
  * @author ZhangYuWei
  * @create 2019-05-07
  */

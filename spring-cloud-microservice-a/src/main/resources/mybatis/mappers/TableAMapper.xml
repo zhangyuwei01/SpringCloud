@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zyw.microservice.a.dao.TableAMapper">
+
+	<resultMap id="tableA" type="com.zyw.microservice.a.entity.TableA">
+		<id column="id" property="id" />
+		<result column="a_id" property="aId" />
+		<result column="a_field1" property="aField1" />
+		<result column="a_field2" property="aField2" />
+	</resultMap>
+	
+	<insert id="addRecord" parameterType="com.zyw.microservice.a.entity.TableA">
+		INSERT INTO table_a
+			(a_field1,a_field2)
+		VALUES
+			(#{aField1},#{aField2})
+	</insert>
+	
+	<delete id="deleteRecord" parameterType="java.lang.Integer">
+		DELETE FROM table_a
+		WHERE a_id = #{aId}
+	</delete>
+	
+	<update id="updateRecord" parameterType="com.zyw.microservice.a.entity.TableA">
+		UPDATE table_a
+		<set>
+			<if test="aField1 != null">
+				a_field1 = #{aField1},
+			</if>
+			<if test="aField2 != null">
+				a_field2 = #{aField2}
+			</if>
+		</set>
+		WHERE a_id = #{aId}
+	</update>
+	
+	<select id="findRecord" parameterType="com.zyw.microservice.a.entity.TableA" resultMap="tableA">
+		SELECT *
+		FROM table_a
+		WHERE 1=1
+		<if test="aField1 != null">
+			AND a_field1 = #{aField1}
+		</if>
+		<if test="aField2 != null">
+			AND a_field2 = #{aField2}
+		</if>
+	</select>
+	
+</mapper>

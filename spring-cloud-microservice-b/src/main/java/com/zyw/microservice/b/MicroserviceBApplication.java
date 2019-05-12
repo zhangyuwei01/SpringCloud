@@ -16,10 +16,10 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 public class MicroserviceBApplication {
 	/**
-	 * @description Ribbon客户端负载均衡
+	 * @description 跨工程调用
 	 */
 	@Bean
-	@LoadBalanced
+	@LoadBalanced //Ribbon客户端负载均衡
 	RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
