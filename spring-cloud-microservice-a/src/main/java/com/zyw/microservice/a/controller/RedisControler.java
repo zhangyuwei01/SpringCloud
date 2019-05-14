@@ -39,12 +39,6 @@ public class RedisControler {
 		return redisService.delete(key);
 	}
 	
-	@PostMapping(value="/update")
-	@ApiOperation(value = "Redis更新数据", notes = "参数是：Redis的key、value")
-	public RestResponse update(@RequestBody RedisVo redisVo) {
-		return redisService.update(redisVo);
-	}
-	
 	@GetMapping(value="/find")
 	@ApiOperation(value = "Redis获取数据", notes = "参数是：Redis的key")
 	public RestResponse find(@RequestParam String key) {
@@ -55,6 +49,18 @@ public class RedisControler {
 	@ApiOperation(value = "Redis刷新数据有效期", notes = "参数是：Redis的key")
 	public RestResponse refresh(@RequestParam String key) {
 		return redisService.refresh(key);
+	}
+	
+	@PostMapping(value="/addObject")
+	@ApiOperation(value = "Redis新增对象", notes = "参数是：VO对象")
+	public RestResponse addObject(@RequestBody RedisVo redisVo) {
+		return redisService.addObject(redisVo);
+	}
+	
+	@GetMapping(value="/findObject")
+	@ApiOperation(value = "Redis获取对象", notes = "参数是：Redis的key")
+	public RestResponse findObject(@RequestParam String uuid) {
+		return redisService.findObject(uuid);
 	}
 	
 }
