@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiOperation;
  */
 @RestController
 @RequestMapping(value="/a/restTemplate")
-@Api(value = "RestTemplate")
+@Api(tags = "RestTemplate")
 public class RestTemplateController {
 	@Autowired
     private RestTemplateService restTemplateService;

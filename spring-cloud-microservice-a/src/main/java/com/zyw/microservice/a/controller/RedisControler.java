@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiOperation;
  */
 @RestController
 @RequestMapping(value="/a/redis")
-@Api(value = "Redis")
+@Api(tags = "Redis")
 public class RedisControler {
 	@Autowired
 	private RedisService redisService;

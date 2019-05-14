@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiOperation;
  */
 @RestController
 @RequestMapping(value="/a/database")
-@Api(value = "DataBase")
+@Api(tags = "DataBase")
 public class DataBaseController {
 	@Autowired
 	private DataBaseService dataBaseService;
