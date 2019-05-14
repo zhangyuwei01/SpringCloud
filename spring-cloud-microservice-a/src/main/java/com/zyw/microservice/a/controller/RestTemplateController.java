@@ -29,16 +29,16 @@ public class RestTemplateController {
 	@Autowired
     private RestTemplateService restTemplateService;
 
-	@GetMapping(value="/producerGet")
-	@ApiOperation(value = "生产者 - get请求", notes = "微服务B传过来的参数")
-    public RestResponse producerGet(@RequestHeader String token,@RequestParam String param1,@RequestParam String param2){
-    	return restTemplateService.producerGet(token,param1,param2);
+	@GetMapping(value="/providerGet")
+	@ApiOperation(value = "服务提供者 - get请求", notes = "微服务B传过来的参数")
+    public RestResponse providerGet(@RequestHeader String token,@RequestParam String param1,@RequestParam String param2){
+    	return restTemplateService.providerGet(token,param1,param2);
     }
 	
-	@PostMapping(value="/producerPost")
-	@ApiOperation(value = "生产者 - post请求", notes = "微服务B传过来的参数")
-    public RestResponse producerPost(@RequestHeader String token,@RequestBody Map<String,Object> params){
-    	return restTemplateService.producerPost(token,params);
+	@PostMapping(value="/providerPost")
+	@ApiOperation(value = "服务提供者 - post请求", notes = "微服务B传过来的参数")
+    public RestResponse providerPost(@RequestHeader String token,@RequestBody Map<String,Object> params){
+    	return restTemplateService.providerPost(token,params);
     }
 	
 }

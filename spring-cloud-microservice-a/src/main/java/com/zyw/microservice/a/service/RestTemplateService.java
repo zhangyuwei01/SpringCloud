@@ -28,10 +28,10 @@ public class RestTemplateService {
     private DiscoveryClient discoveryClient;
 	
 	/**
-	 * @description 生产者 - get请求：被微服务B调用
+	 * @description 服务提供者 - get请求：被微服务B调用
 	 */
-	public RestResponse producerGet(String token, String param1, String param2) {
-		logger.info("进入producerGet方法，参数是：token={},param1={},param2={}",token,param1,param2);
+	public RestResponse providerGet(String token, String param1, String param2) {
+		logger.info("进入providerGet方法，参数是：token={},param1={},param2={}",token,param1,param2);
 		Map<String,Object> returnMap = new HashMap<>();//返回前端的Map结果集
 		StringBuilder servicesInfo = new StringBuilder();//发现当前的服务，并提供服务的信息
 		List<String> serviceIds = discoveryClient.getServices();
@@ -61,10 +61,10 @@ public class RestTemplateService {
 	}
 	
 	/**
-	 * @description 生产者 - post请求：被微服务B调用
+	 * @description 服务提供者 - post请求：被微服务B调用
 	 */
-	public RestResponse producerPost(String token, Map<String,Object> params) {
-		logger.info("进入producerPost方法，参数是：token={},params={}",token,params);
+	public RestResponse providerPost(String token, Map<String,Object> params) {
+		logger.info("进入providerPost方法，参数是：token={},params={}",token,params);
 		Map<String,Object> returnMap = new HashMap<>();//返回前端的Map结果集
 		StringBuilder servicesInfo = new StringBuilder();//发现当前的服务，并提供服务的信息
 		List<String> serviceIds = discoveryClient.getServices();
