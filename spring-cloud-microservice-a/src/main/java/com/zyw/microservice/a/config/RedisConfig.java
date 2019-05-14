@@ -22,8 +22,8 @@ public class RedisConfig extends CachingConfigurerSupport {
      * @param redisConnectionFactory
      */
 	@Bean
-	public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-		RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+	public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+		RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
 		redisTemplate.setConnectionFactory(redisConnectionFactory);
 		
 		// 使用Jackson2JsonRedisSerialize 替换默认序列化

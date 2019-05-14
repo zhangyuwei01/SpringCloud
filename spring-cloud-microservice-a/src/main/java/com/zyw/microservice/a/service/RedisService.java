@@ -26,7 +26,7 @@ public class RedisService {
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
 	@Autowired
-	private RedisTemplate<Object, Object> redisTemplate;
+	private RedisTemplate<String, Object> redisTemplate;
 	
 	/**
 	 * @description Redis新增数据
