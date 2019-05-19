@@ -35,8 +35,8 @@ public class Swagger2 {
 		return new ApiInfoBuilder()
 				.title("微服务A")
 				.description("微服务A")
-				.termsOfServiceUrl("")
-				.contact(new Contact("ZhangYuWei","http://localhost:8001","zhangyuwei01@foxmail.com"))
+				.termsOfServiceUrl("").contact(new Contact("ZhangYuWei",
+						"http://localhost:8001/spring-cloud/swagger-ui.html", "zhangyuwei01@foxmail.com"))
 				.version("1.0")
 				.build();
 	}
