@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+	<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="LOG_HOME" value="D:\\Programming\\Log"/>
+    <property name="APP_DIR" value="spring_cloud_eureka_server" />
+    
+    <!-- Console 输出设置 -->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}[%thread]%-5level %logger{50} - %msg%n</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<!-- 日志记录器，日期大小滚动记录 -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 正在记录的日志文件的路径及文件名 -->
+        <!-- <file>${LOG_HOME}/${APP_DIR}/${APP_DIR}.log</file> -->
+        
+        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+           <!-- 日志文件输出的文件名 -->
+           <FileNamePattern>${LOG_HOME}/${APP_DIR}/${APP_DIR}.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+           <!-- 单个日志文件最大的大小 -->
+           <maxFileSize>10MB</maxFileSize>
+           <!-- 日志文件保留天数 -->
+           <maxHistory>30</maxHistory>
+           <!-- 日志文件最大空间 -->
+           <totalSizeCap>1GB</totalSizeCap>
+       </rollingPolicy>
+       
+       <!-- 此日志文件记录info以上级别的 -->
+       <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+           <level>INFO</level>
+       </filter>
+       
+       <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度，%msg：日志消息，%n是换行符-->
+       <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+           <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+           <charset>utf8</charset>
+       </encoder>
+	</appender>
+	
+	<!-- 日志输出级别 -->
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>  
