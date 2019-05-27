@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @SpringBootApplication
 @EnableDiscoveryClient // 注册到Eureka上去
-@MapperScan("com.zyw.microservice.a.dao") // 扫描DAO类
+@MapperScan("com.zyw.microservice.a.dao") // Mybatis扫描DAO类
 @EnableScheduling // 开启定时任务
 public class MicroserviceAApplication {
 

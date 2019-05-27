@@ -15,14 +15,6 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 public class MicroserviceBApplication {
-	/**
-	 * @description 跨工程调用
-	 */
-	@Bean
-	@LoadBalanced //Ribbon客户端负载均衡
-	RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
 	
 	public static void main(String[] args) {
 		SpringApplication.run(MicroserviceBApplication.class, args);

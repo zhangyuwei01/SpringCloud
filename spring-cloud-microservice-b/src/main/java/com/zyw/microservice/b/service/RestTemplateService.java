@@ -27,7 +27,7 @@ public class RestTemplateService {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	RestTemplate restTemplate;
+	public RestTemplate restTemplate;
 	
 	/**
 	 * @description 消费者 - get请求：调用微服务A
@@ -35,7 +35,7 @@ public class RestTemplateService {
 	@SuppressWarnings("unchecked")
 	public RestResponse consumerGet() {
 		logger.info("进入consumerGet方法，无参数......");
-		String url = "http://microservice-a/spring-cloud/a/restTemplate/producerGet?param1=1&param2=2";
+		String url = "http://microservice-a/spring-cloud/a/restTemplate/providerGet?param1=1&param2=2";
 		String body = null; //请求体
 		HttpHeaders headers = new HttpHeaders(); //请求头
 		headers.add("token", "abcdef"); //将token放到请求头中
@@ -46,7 +46,7 @@ public class RestTemplateService {
 			response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, RestResponse.class);
 		} catch (RestClientException e) {
 			logger.error("调用微服务A失败！异常信息：{}",e.getMessage(),e);
-			return RestUtils.returnFailure("调用微服务A失败！");
+			return RestUtils.returnFailure("调用微服务A失败！异常信息："+e.getMessage());
 		}
 		if(response.getStatusCodeValue() != 200) {
 			return RestUtils.returnFailure("调用微服务A失败！");
@@ -64,7 +64,7 @@ public class RestTemplateService {
 	@SuppressWarnings("unchecked")
 	public RestResponse consumerPost() {
 		logger.info("进入consumerPost方法，无参数......");
-		String url = "http://microservice-a/spring-cloud/a/restTemplate/producerPost";
+		String url = "http://microservice-a/spring-cloud/a/restTemplate/providerPost";
 		Map<String,Object> body = new HashMap<>(); //请求体
 		body.put("param1", 1);
 		body.put("param2", 2);
@@ -77,7 +77,7 @@ public class RestTemplateService {
 			response = this.restTemplate.postForEntity(url, requestEntity, RestResponse.class);
 		} catch (RestClientException e) {
 			logger.error("调用微服务A失败！异常信息：{}",e.getMessage(),e);
-			return RestUtils.returnFailure("调用微服务A失败！");
+			return RestUtils.returnFailure("调用微服务A失败！异常信息："+e.getMessage());
 		}
 		if(response.getStatusCodeValue() != 200) {
 			return RestUtils.returnFailure("调用微服务A失败！");
